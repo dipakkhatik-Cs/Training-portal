@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}CyberGuard - Security Tips{% endblock %}
+
+{% block content %}
+<div class="cyber-card" style="margin-bottom: 2rem;">
+    <span class="badge-mini">BEST PRACTICES</span>
+    <h1 style="color: white; font-size: 2rem; margin-top: 0.5rem;">Cybersecurity Defense Tips</h1>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">Actionable everyday habits to secure enterprise data and protect workstations.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+    <div class="cyber-card">
+        <i class="fa-solid fa-key" style="font-size: 1.5rem; color: var(--amber-accent); margin-bottom: 0.75rem;"></i>
+        <h3 style="color: white; margin-bottom: 0.5rem;">1. Use Strong Passphrases</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">Combine 4+ random words like 'sunset-battery-falcon-origami'. Length exponentially beats short complexity against brute-force attacks.</p>
+    </div>
+
+    <div class="cyber-card">
+        <i class="fa-solid fa-lock" style="font-size: 1.5rem; color: var(--cyan-accent); margin-bottom: 0.75rem;"></i>
+        <h3 style="color: white; margin-bottom: 0.5rem;">2. Enable Multi-Factor Authentication</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">MFA blocks 99.9% of automated account breaches. Prefer authenticator apps (TOTP) or hardware keys over SMS.</p>
+    </div>
+
+    <div class="cyber-card">
+        <i class="fa-solid fa-link" style="font-size: 1.5rem; color: var(--rose-accent); margin-bottom: 0.75rem;"></i>
+        <h3 style="color: white; margin-bottom: 0.5rem;">3. Don't Click Suspicious Links</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">Always hover over links to preview the actual destination URL before clicking. Inspect lookalike characters carefully.</p>
+    </div>
+
+    <div class="cyber-card">
+        <i class="fa-solid fa-rotate" style="font-size: 1.5rem; color: var(--blue-accent); margin-bottom: 0.75rem;"></i>
+        <h3 style="color: white; margin-bottom: 0.5rem;">4. Keep Software Updated</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">Enable automatic updates for your OS, browser, and security agents to patch known vulnerabilities promptly.</p>
+    </div>
+
+    <div class="cyber-card">
+        <i class="fa-solid fa-laptop" style="font-size: 1.5rem; color: var(--purple-accent); margin-bottom: 0.75rem;"></i>
+        <h3 style="color: white; margin-bottom: 0.5rem;">5. Lock Your Computer</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">Whenever leaving your desk, press Win+L or Cmd+Ctrl+Q. Never leave sensitive documents or screens exposed.</p>
+    </div>
+
+    <div class="cyber-card">
+        <i class="fa-solid fa-wifi" style="font-size: 1.5rem; color: var(--amber-accent); margin-bottom: 0.75rem;"></i>
+        <h3 style="color: white; margin-bottom: 0.5rem;">6. Avoid Public Wi-Fi Without VPN</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">Public Wi-Fi at airports and cafes is vulnerable to packet sniffing. Always route traffic through the enterprise VPN.</p>
+    </div>
+</div>
+{% endblock %}

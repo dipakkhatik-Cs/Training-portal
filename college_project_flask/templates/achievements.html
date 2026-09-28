@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}CyberGuard - Achievements & Leaderboard{% endblock %}
+
+{% block content %}
+<div class="cyber-card" style="margin-bottom: 2rem;">
+    <span class="badge-mini">GAMIFICATION</span>
+    <h1 style="color: white; font-size: 2rem; margin-top: 0.5rem;">Security Achievements & Leaderboard</h1>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">Earn badges, unlock experience points, and defend enterprise systems.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+    <div class="cyber-card" style="text-align: center;">
+        <i class="fa-solid fa-shield-halved" style="font-size: 2rem; color: var(--cyan-accent); margin-bottom: 0.5rem;"></i>
+        <h4 style="color: white;">Cybersecurity Beginner</h4>
+        <p style="color: var(--text-muted); font-size: 0.78rem;">Completed 1st course</p>
+        <span class="badge-mini" style="margin-top: 0.5rem; display: inline-block;">+100 XP</span>
+    </div>
+
+    <div class="cyber-card" style="text-align: center;">
+        <i class="fa-solid fa-fish-fins" style="font-size: 2rem; color: var(--blue-accent); margin-bottom: 0.5rem;"></i>
+        <h4 style="color: white;">Phishing Defender</h4>
+        <p style="color: var(--text-muted); font-size: 0.78rem;">Passed phishing lab</p>
+        <span class="badge-mini" style="margin-top: 0.5rem; display: inline-block;">+250 XP</span>
+    </div>
+
+    <div class="cyber-card" style="text-align: center;">
+        <i class="fa-solid fa-key" style="font-size: 2rem; color: var(--amber-accent); margin-bottom: 0.5rem;"></i>
+        <h4 style="color: white;">Password Protector</h4>
+        <p style="color: var(--text-muted); font-size: 0.78rem;">Mastered passphrases</p>
+        <span class="badge-mini" style="margin-top: 0.5rem; display: inline-block;">+200 XP</span>
+    </div>
+
+    <div class="cyber-card" style="text-align: center;">
+        <i class="fa-solid fa-trophy" style="font-size: 2rem; color: var(--emerald-accent); margin-bottom: 0.5rem;"></i>
+        <h4 style="color: white;">Security Champion</h4>
+        <p style="color: var(--text-muted); font-size: 0.78rem;">Score &gt; 85 & 5d streak</p>
+        <span class="badge-mini" style="margin-top: 0.5rem; display: inline-block;">+500 XP</span>
+    </div>
+</div>
+
+<div class="cyber-card">
+    <h3 style="color: white; margin-bottom: 1.5rem;"><i class="fa-solid fa-ranking-star"></i> Enterprise Security Leaderboard</h3>
+    <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+        <thead>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+                <th style="padding: 0.75rem;">Rank</th>
+                <th style="padding: 0.75rem;">Employee</th>
+                <th style="padding: 0.75rem;">Department</th>
+                <th style="padding: 0.75rem;">Security Score</th>
+                <th style="padding: 0.75rem;">Streak</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in leaderboard %}
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-primary);">
+                <td style="padding: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700;">#{{ loop.index }}</td>
+                <td style="padding: 0.75rem; font-weight: 600;">{{ u.name }}</td>
+                <td style="padding: 0.75rem; color: var(--text-muted);">{{ u.department }}</td>
+                <td style="padding: 0.75rem; color: var(--emerald-accent); font-weight: 700;">{{ u.security_score }}/100</td>
+                <td style="padding: 0.75rem; color: var(--amber-accent);"><i class="fa-solid fa-fire"></i> {{ u.streak_days }} Days</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

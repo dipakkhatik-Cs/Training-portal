@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}CyberGuard - Build a Stronger Human Firewall{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-content">
+        <span class="badge-mini"><i class="fa-solid fa-shield-halved"></i> NIST SP 800-50 COMPLIANT PLATFORM</span>
+        <h1 class="hero-title">Build a Stronger <span class="text-cyan">Human Firewall</span></h1>
+        <p class="hero-subtitle">
+            Over 82% of data breaches involve human error. CyberGuard transforms your employees into a vigilant first line of defense through interactive training, phishing simulations, and incident reporting.
+        </p>
+        <div class="hero-actions">
+            <a href="{{ url_for('courses') }}" class="btn btn-primary-glow"><i class="fa-solid fa-graduation-cap"></i> Start Training</a>
+            <a href="{{ url_for('phishing_lab') }}" class="btn cyber-card" style="padding: 0.6rem 1.2rem;"><i class="fa-solid fa-fish-fins"></i> Spot The Phish Lab</a>
+        </div>
+    </div>
+</div>
+
+<div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 3rem 0;">
+    <div class="cyber-card" style="text-align: center;">
+        <h3 style="font-size: 2.2rem; color: var(--cyan-accent); font-family: 'JetBrains Mono', monospace;">10+</h3>
+        <p style="font-weight: 700; color: white;">Training Modules</p>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Core security principles</span>
+    </div>
+    <div class="cyber-card" style="text-align: center;">
+        <h3 style="font-size: 2.2rem; color: var(--cyan-accent); font-family: 'JetBrains Mono', monospace;">50+</h3>
+        <p style="font-weight: 700; color: white;">Security Tips</p>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Everyday habits</span>
+    </div>
+    <div class="cyber-card" style="text-align: center;">
+        <h3 style="font-size: 2.2rem; color: var(--emerald-accent); font-family: 'JetBrains Mono', monospace;">100%</h3>
+        <p style="font-weight: 700; color: white;">Workforce Awareness</p>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Enterprise coverage</span>
+    </div>
+    <div class="cyber-card" style="text-align: center;">
+        <h3 style="font-size: 2.2rem; color: var(--amber-accent); font-family: 'JetBrains Mono', monospace;">98.4%</h3>
+        <p style="font-weight: 700; color: white;">Phish Catch Rate</p>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Simulated drills</span>
+    </div>
+</div>
+
+<div class="features-section" style="margin-top: 4rem;">
+    <div style="text-align: center; margin-bottom: 2.5rem;">
+        <span class="badge-mini">ENTERPRISE MODULES</span>
+        <h2 style="font-size: 2rem; color: white; margin-top: 0.5rem;">Core Defense Pillars</h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        <div class="cyber-card">
+            <i class="fa-solid fa-shield-halved" style="font-size: 1.8rem; color: var(--cyan-accent); margin-bottom: 1rem;"></i>
+            <h3 style="color: white; margin-bottom: 0.5rem;">Security Awareness Training</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Master the CIA Triad, zero-trust hygiene, and defense against social engineering.</p>
+        </div>
+        <div class="cyber-card">
+            <i class="fa-solid fa-fish-fins" style="font-size: 1.8rem; color: var(--blue-accent); margin-bottom: 1rem;"></i>
+            <h3 style="color: white; margin-bottom: 0.5rem;">Phishing Awareness Lab</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Interactive inbox simulations testing recognition of lookalike domains and urgency triggers.</p>
+        </div>
+        <div class="cyber-card">
+            <i class="fa-solid fa-key" style="font-size: 1.8rem; color: var(--amber-accent); margin-bottom: 1rem;"></i>
+            <h3 style="color: white; margin-bottom: 0.5rem;">Password Security & MFA</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">High-entropy passphrases, stopping credential stuffing, and modern authenticator app setup.</p>
+        </div>
+        <div class="cyber-card">
+            <i class="fa-solid fa-database" style="font-size: 1.8rem; color: var(--purple-accent); margin-bottom: 1rem;"></i>
+            <h3 style="color: white; margin-bottom: 0.5rem;">Data Privacy & Governance</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Protecting Customer Personally Identifiable Information (PII) and GDPR compliance.</p>
+        </div>
+        <div class="cyber-card">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.8rem; color: var(--rose-accent); margin-bottom: 1rem;"></i>
+            <h3 style="color: white; margin-bottom: 0.5rem;">Incident Reporting</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Fast escalation channel generating unique reference codes and containment guidance.</p>
+        </div>
+        <div class="cyber-card">
+            <i class="fa-solid fa-award" style="font-size: 1.8rem; color: var(--emerald-accent); margin-bottom: 1rem;"></i>
+            <h3 style="color: white; margin-bottom: 0.5rem;">Cybersecurity Quiz</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Scored multiple-choice exams with detailed feedback and certification achievements.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

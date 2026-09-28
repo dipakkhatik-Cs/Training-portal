@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.cyberguard-db/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env*
+!.env.example
+next_stderr.log
+next_stdout.log

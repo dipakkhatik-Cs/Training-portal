@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}CyberGuard - {{ course.title }}{% endblock %}
+
+{% block content %}
+<div class="cyber-card" style="margin-bottom: 2rem;">
+    <a href="{{ url_for('courses') }}" style="color: var(--cyan-accent); font-size: 0.82rem; text-decoration: none; margin-bottom: 0.5rem; display: inline-block;">← Back to Courses</a>
+    <span class="badge-mini" style="margin-left: 0.5rem;">{{ course.category }}</span>
+    <h1 style="color: white; font-size: 2rem; margin-top: 0.5rem;">{{ course.title }}</h1>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">{{ course.description }}</p>
+</div>
+
+<div class="cyber-card" style="margin-bottom: 2rem;">
+    <h3 style="color: white; margin-bottom: 1rem;"><i class="fa-solid fa-graduation-cap"></i> Interactive Lessons</h3>
+    <div style="background: rgba(10, 14, 26, 0.7); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+        <h4 style="color: var(--cyan-accent); margin-bottom: 0.5rem;">Lesson Overview & Threat Analysis</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8;">
+            In enterprise environments, cyber threats continuously evolve to exploit psychological cognitive biases: urgency, curiosity, and fear. Understanding how adversaries perform reconnaissance, craft deceptive email campaigns, and execute credential harvesting is paramount to establishing effective frontline defense.
+        </p>
+
+        <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(6, 182, 212, 0.1); border-left: 4px solid var(--cyan-accent); border-radius: 4px;">
+            <p style="color: var(--cyan-accent); font-weight: 700; font-size: 0.85rem;"><i class="fa-solid fa-lightbulb"></i> Key Security Rule:</p>
+            <p style="color: var(--text-primary); font-size: 0.85rem; margin-top: 0.25rem;">Always verify sender addresses in angle brackets and report unexpected link requests immediately to the internal SOC team.</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Estimated time: {{ course.duration }}</span>
+        <a href="{{ url_for('quiz') }}" class="btn btn-primary-glow"><i class="fa-solid fa-award"></i> Take Course Quiz</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}CyberGuard - Admin SOC Console{% endblock %}
+
+{% block content %}
+<div class="cyber-card" style="margin-bottom: 2rem;">
+    <span class="badge-mini" style="background: rgba(245, 158, 11, 0.2); color: var(--amber-accent); border-color: var(--amber-accent);">ADMIN SOC DASHBOARD</span>
+    <h1 style="color: white; font-size: 2rem; margin-top: 0.5rem;">Security Operations Center Oversight</h1>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">Enterprise compliance, phishing simulation statistics, and incident triage.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+    <div class="cyber-card">
+        <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Total Employees</p>
+        <h2 style="font-size: 2.2rem; color: white; margin: 0.5rem 0;">{{ metrics.total_employees }}</h2>
+        <span style="font-size: 0.75rem; color: var(--cyan-accent);">Enrolled in portal</span>
+    </div>
+
+    <div class="cyber-card">
+        <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Completion Rate</p>
+        <h2 style="font-size: 2.2rem; color: var(--emerald-accent); margin: 0.5rem 0;">{{ metrics.completion_rate }}%</h2>
+        <span style="font-size: 0.75rem; color: var(--emerald-accent);">Curriculum adherence</span>
+    </div>
+
+    <div class="cyber-card">
+        <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Avg Security Score</p>
+        <h2 style="font-size: 2.2rem; color: white; margin: 0.5rem 0;">{{ metrics.avg_security_score }}/100</h2>
+        <span style="font-size: 0.75rem; color: var(--emerald-accent);">Optimal Defense</span>
+    </div>
+
+    <div class="cyber-card">
+        <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Open Incidents</p>
+        <h2 style="font-size: 2.2rem; color: var(--amber-accent); margin: 0.5rem 0;">{{ metrics.open_incidents }}</h2>
+        <span style="font-size: 0.75rem; color: var(--amber-accent);">Under investigation</span>
+    </div>
+</div>
+
+<div class="cyber-card" style="margin-bottom: 2rem;">
+    <h3 style="color: white; margin-bottom: 1.5rem;"><i class="fa-solid fa-triangle-exclamation"></i> Reported Security Incidents</h3>
+    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+        <thead>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+                <th style="padding: 0.75rem;">Ticket Ref</th>
+                <th style="padding: 0.75rem;">Reporter</th>
+                <th style="padding: 0.75rem;">Type</th>
+                <th style="padding: 0.75rem;">Urgency</th>
+                <th style="padding: 0.75rem;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inc in incidents %}
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-primary);">
+                <td style="padding: 0.75rem; font-family: 'JetBrains Mono', monospace; color: var(--cyan-accent); font-weight: 700;">{{ inc.reference_no }}</td>
+                <td style="padding: 0.75rem;">{{ inc.employee_name }} ({{ inc.employee_id }})</td>
+                <td style="padding: 0.75rem;">{{ inc.incident_type }}</td>
+                <td style="padding: 0.75rem;"><span class="badge-mini" style="color: var(--amber-accent); border-color: var(--amber-accent);">{{ inc.urgency }}</span></td>
+                <td style="padding: 0.75rem;"><span class="badge-mini">{{ inc.status }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

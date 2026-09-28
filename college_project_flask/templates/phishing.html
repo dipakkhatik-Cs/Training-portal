@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}CyberGuard - Spot The Phish Simulation{% endblock %}
+
+{% block content %}
+<div class="cyber-card" style="margin-bottom: 2rem;">
+    <span class="badge-mini">SIMULATION LAB</span>
+    <h1 style="color: white; font-size: 2rem; margin-top: 0.5rem;">Spot the Phishing Email Simulation</h1>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">Analyze sender address, header indicators, and body text. Decide whether this email is Safe or Phishing.</p>
+</div>
+
+<div class="cyber-card" style="padding: 0; overflow: hidden; margin-bottom: 2rem;">
+    <div style="background: rgba(10, 14, 26, 0.9); padding: 0.8rem 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);"><i class="fa-regular fa-envelope"></i> INBOX SIMULATION #1</span>
+        <span class="badge-mini">DIFFICULTY: MEDIUM</span>
+    </div>
+
+    <div style="padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; line-height: 1.8;">
+        <p><strong>From:</strong> Microsoft Office 365 Support &lt;support@msoft-verify-alert.online&gt;</p>
+        <p><strong>Subject:</strong> <span style="color: var(--rose-accent); font-weight: 700;">URGENT: Password Expires in 2 Hours - Verify Identity Immediately</span></p>
+        <p><strong>Date:</strong> Today, 09:14 AM</p>
+    </div>
+
+    <div style="padding: 2rem; background: #ffffff; color: #1e293b; font-size: 0.9rem; line-height: 1.6;">
+        <p>Dear Valued Employee,</p>
+        <p style="margin-top: 1rem;">Your corporate Office 365 password will expire today at 12:00 PM. Failure to re-verify will cause termination of mailbox access.</p>
+        <p style="margin-top: 1rem;">To keep your current password, click the button below to complete verification:</p>
+        <div style="margin: 1.5rem 0;">
+            <a href="#" style="background: #0284c7; color: white; padding: 0.6rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 700; display: inline-block;">Keep Existing Password →</a>
+        </div>
+        <p style="font-size: 0.75rem; color: #64748b;">Notice: This is an automated notification. Microsoft Corporation.</p>
+    </div>
+</div>
+
+<div class="cyber-card" style="text-align: center; padding: 2rem;">
+    <h3 style="color: white; margin-bottom: 1rem;">Is this email SAFE or PHISHING?</h3>
+    <div style="display: flex; gap: 1rem; justify-content: center;">
+        <button onclick="document.getElementById('phish-result').style.display='block';" class="btn" style="background: var(--emerald-accent); color: #0a0e1a; font-weight: 700; padding: 0.75rem 2rem;">
+            <i class="fa-solid fa-shield-halved"></i> SAFE
+        </button>
+        <button onclick="document.getElementById('phish-result').style.display='block';" class="btn" style="background: var(--rose-accent); color: white; font-weight: 700; padding: 0.75rem 2rem;">
+            <i class="fa-solid fa-triangle-exclamation"></i> PHISHING
+        </button>
+    </div>
+
+    <div id="phish-result" style="display: none; margin-top: 2rem; padding: 1.5rem; background: rgba(244, 63, 94, 0.1); border: 1px solid var(--rose-accent); border-radius: 10px; text-align: left;">
+        <h4 style="color: var(--rose-accent);"><i class="fa-solid fa-triangle-exclamation"></i> VERDICT: CONFIRMED PHISHING!</h4>
+        <p style="color: var(--text-primary); font-size: 0.88rem; margin-top: 0.5rem; line-height: 1.6;">
+            <strong>Red Flags Identified:</strong><br>
+            1. <strong>Domain Spoofing:</strong> The sender domain is <code>@msoft-verify-alert.online</code>, not <code>@microsoft.com</code>.<br>
+            2. <strong>False Urgency:</strong> Threatens access loss in 2 hours to provoke emotional panic.<br>
+            3. <strong>Generic Greeting:</strong> Addresses you as 'Valued Employee' instead of your real name.
+        </p>
+    </div>
+</div>
+{% endblock %}

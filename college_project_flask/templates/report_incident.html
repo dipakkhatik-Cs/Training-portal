@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}CyberGuard - Report Incident{% endblock %}
+
+{% block content %}
+<div class="cyber-card" style="margin-bottom: 2rem;">
+    <span class="badge-mini">INCIDENT HOTLINE</span>
+    <h1 style="color: white; font-size: 2rem; margin-top: 0.5rem;">Report a Cybersecurity Incident</h1>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">Prompt escalation prevents network lateral movement. All reports are immediately reviewed by the SOC.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: 3fr 2fr; gap: 2rem;">
+    <div class="cyber-card">
+        <h3 style="color: white; margin-bottom: 1.5rem;">Incident Details Form</h3>
+        <form method="POST" action="{{ url_for('report_incident') }}" style="display: flex; flex-direction: column; gap: 1rem;">
+            <div>
+                <label style="display: block; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-bottom: 0.4rem;">Employee Name</label>
+                <input type="text" name="employee_name" value="{{ user.name if user else 'Sarah Connor' }}" required style="width: 100%; padding: 0.65rem 1rem; background: rgba(10, 14, 26, 0.9); border: 1px solid var(--border-color); border-radius: 8px; color: white;">
+            </div>
+
+            <div>
+                <label style="display: block; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-bottom: 0.4rem;">Employee ID</label>
+                <input type="text" name="employee_id" value="{{ user.employee_id if user else 'EMP-1042' }}" required style="width: 100%; padding: 0.65rem 1rem; background: rgba(10, 14, 26, 0.9); border: 1px solid var(--border-color); border-radius: 8px; color: white;">
+            </div>
+
+            <div>
+                <label style="display: block; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-bottom: 0.4rem;">Incident Type</label>
+                <select name="incident_type" style="width: 100%; padding: 0.65rem 1rem; background: rgba(10, 14, 26, 0.9); border: 1px solid var(--border-color); border-radius: 8px; color: white;">
+                    <option value="Phishing Email">Phishing Email / BEC</option>
+                    <option value="Malware">Malware / Ransomware</option>
+                    <option value="Lost/Stolen Device">Lost / Stolen Device</option>
+                    <option value="Suspicious Login">Suspicious Login Anomaly</option>
+                    <option value="Data Leak">Data Leak / PII Exposure</option>
+                    <option value="Other">Other Security Incident</option>
+                </select>
+            </div>
+
+            <div>
+                <label style="display: block; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-bottom: 0.4rem;">Urgency Level</label>
+                <select name="urgency" style="width: 100%; padding: 0.65rem 1rem; background: rgba(10, 14, 26, 0.9); border: 1px solid var(--border-color); border-radius: 8px; color: white;">
+                    <option value="Low">Low - Informational</option>
+                    <option value="Medium" selected>Medium - Suspicious activity</option>
+                    <option value="High">High - Credential entered / Link opened</option>
+                    <option value="Critical">Critical - Active ransomware / Device stolen</option>
+                </select>
+            </div>
+
+            <div>
+                <label style="display: block; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-bottom: 0.4rem;">Incident Description</label>
+                <textarea name="description" rows="4" placeholder="Describe the sequence of events and any suspicious messages..." required style="width: 100%; padding: 0.65rem 1rem; background: rgba(10, 14, 26, 0.9); border: 1px solid var(--border-color); border-radius: 8px; color: white;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary-glow" style="padding: 0.8rem; justify-content: center;">
+                <i class="fa-solid fa-paper-plane"></i> Submit Incident Report
+            </button>
+        </form>
+    </div>
+
+    <div class="cyber-card">
+        <h3 style="color: white; margin-bottom: 1rem;"><i class="fa-solid fa-clock-rotate-left"></i> Recent Incidents</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            {% for inc in recent_incidents %}
+            <div style="background: rgba(10, 14, 26, 0.6); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                    <span style="font-family: 'JetBrains Mono', monospace; color: var(--cyan-accent); font-size: 0.8rem; font-weight: 700;">{{ inc.reference_no }}</span>
+                    <span class="badge-mini">{{ inc.status }}</span>
+                </div>
+                <p style="color: white; font-weight: 600; font-size: 0.85rem;">{{ inc.incident_type }}</p>
+                <p style="color: var(--text-muted); font-size: 0.78rem;">{{ inc.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

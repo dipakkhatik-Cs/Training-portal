@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}CyberGuard - Course Catalog{% endblock %}
+
+{% block content %}
+<div class="cyber-card" style="margin-bottom: 2rem;">
+    <span class="badge-mini">CURRICULUM CATALOG</span>
+    <h1 style="color: white; font-size: 2rem; margin-top: 0.5rem;">Cybersecurity Awareness Courses</h1>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">Ten comprehensive modules designed according to NIST SP 800-50 awareness guidelines.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+    {% for course in courses %}
+    <div class="cyber-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span class="badge-mini">{{ course.category }}</span>
+                <span style="font-size: 0.75rem; color: var(--emerald-accent); font-weight: 700;">{{ course.difficulty }}</span>
+            </div>
+            <h3 style="color: white; margin-bottom: 0.5rem;">{{ course.title }}</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.5rem;">{{ course.description }}</p>
+        </div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; color: var(--text-dim);"><i class="fa-regular fa-clock"></i> {{ course.duration }}</span>
+            <a href="{{ url_for('course_detail', course_id=course.id) }}" class="btn btn-primary-glow" style="padding: 0.4rem 1rem; font-size: 0.82rem;">Start Course →</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
